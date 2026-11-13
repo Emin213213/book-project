@@ -1,0 +1,130 @@
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.statCard {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.statIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statIcon .material-icons-outlined {
+  font-size: 1.4rem;
+}
+
+.statIconBooks {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366F1;
+}
+
+.statIconCategories {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+}
+
+.statIconAuthors {
+  background: rgba(245, 158, 11, 0.1);
+  color: #F59E0B;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.statIconOrders {
+  background: rgba(236, 72, 153, 0.1);
+  color: #EC4899;
+}
+
+.statusBadge {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cardLink {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6366F1;
+  transition: opacity var(--transition);
+}
+
+.cardLink:hover {
+  opacity: 0.7;
+}
+
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.quickAction {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all var(--transition);
+}
+
+.quickAction:hover {
+  border-color: #6366F1;
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.08);
+  transform: translateY(-2px);
+}
+
+.quickAction .material-icons-outlined {
+  font-size: 1.4rem;
+  color: #6366F1;
+}
+
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .quickActions {
+    grid-template-columns: 1fr;
+  }
+}

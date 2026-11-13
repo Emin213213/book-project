@@ -1,0 +1,249 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.clearBtn:hover {
+  color: #EF4444;
+}
+
+.clearBtn .material-icons-outlined {
+  font-size: 1.1rem;
+}
+
+.emptyAction {
+  display: flex;
+  justify-content: center;
+  margin-top: -20px;
+}
+
+.continueLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6366F1;
+  transition: opacity var(--transition);
+}
+
+.continueLink:hover {
+  opacity: 0.7;
+}
+
+/* ---------- Item ---------- */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-white);
+}
+
+.itemCover {
+  flex-shrink: 0;
+}
+
+.itemCover img {
+  width: 48px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.itemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.itemTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--transition);
+}
+
+.itemTitle:hover {
+  color: #6366F1;
+}
+
+.itemAuthor {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.itemPrice {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* ---------- Quantity ---------- */
+.itemQty {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.qtyBtn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+
+.qtyBtn:hover {
+  border-color: #6366F1;
+  color: #6366F1;
+}
+
+.qtyBtn .material-icons-outlined {
+  font-size: 1rem;
+}
+
+.qtyValue {
+  width: 32px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.itemTotal {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  min-width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.removeBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.removeBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+.removeBtn .material-icons-outlined {
+  font-size: 1rem;
+}
+
+/* ---------- Summary ---------- */
+.summary {
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.summaryTotal {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.checkoutBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: #6366F1;
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.checkoutBtn:hover {
+  background: #4F46E5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.checkoutBtn .material-icons-outlined {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .item {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .itemTotal {
+    min-width: auto;
+  }
+}

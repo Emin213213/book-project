@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "BookWholesale UA", "email": "orders@bookwholesale.ua", "phone": "+380 (44) 100-20-30", "contactPerson": "Іван Коваленко", "address": "м. Київ, вул. Промислова, 5", "note": "Основний постачальник, великий асортимент" },
+  { "id": 2, "name": "Librex", "email": "supply@librex.com.ua", "phone": "+380 (44) 200-30-40", "contactPerson": "Олена Ткаченко", "address": "м. Харків, вул. Книжкова, 12", "note": "Спеціалізація на імпортній літературі" },
+  { "id": 3, "name": "KnygaUA", "email": "zakaz@knyga.ua", "phone": "+380 (44) 300-40-50", "contactPerson": "Михайло Савченко", "address": "м. Львів, вул. Друкарська, 8", "note": "Українська та класична література" }
+]

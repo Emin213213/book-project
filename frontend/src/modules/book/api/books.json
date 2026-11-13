@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "title": "Властелин колец",
+    "authorId": 1,
+    "author": "J.R.R. Tolkien",
+    "categoryId": 1,
+    "category": "Action & Adventure",
+    "year": 1954,
+    "pages": 1193,
+    "price": 1290,
+    "discount": {
+      "percent": 20,
+      "endsAt": "2026-04-15T23:59:59.000Z"
+    },
+    "stock": 12,
+    "description": "The Lord of the Rings is an epic high-fantasy novel by English author and scholar J. R. R. Tolkien. Set in Middle-earth, the story began as a sequel to Tolkien's 1937 children's book The Hobbit, but eventually developed into a much larger work.",
+    "tags": [
+      "Fiction",
+      "Fantasy fiction",
+      "English Fantasy fiction",
+      "Wizards"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/14627222-M.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Игра престолов",
+    "authorId": 2,
+    "author": "George R. R. Martin",
+    "categoryId": 2,
+    "category": "Fantasy",
+    "year": 1996,
+    "pages": 694,
+    "price": 890,
+    "discount": null,
+    "stock": 12,
+    "description": "A Game of Thrones is the first novel in A Song of Ice and Fire, a series of fantasy novels by the American author George R. R. Martin. It was first published on August 1, 1996. The novel won the 1997 Locus Award and was nominated for both the 1997 Nebula Award and the 1997 World Fantasy Award.",
+    "tags": [
+      "Fantasy",
+      "Epic fantasy",
+      "Political fiction"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/12008654-M.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Властелин колец – Братство кольца",
+    "authorId": 1,
+    "author": "J.R.R. Tolkien",
+    "categoryId": 1,
+    "category": "Action & Adventure",
+    "year": 1954,
+    "pages": 423,
+    "price": 690,
+    "discount": null,
+    "stock": 12,
+    "description": "The Fellowship of the Ring is the first of three volumes of the epic novel The Lord of the Rings by the English author J. R. R. Tolkien. It is followed by The Two Towers and The Return of the King.",
+    "tags": [
+      "Fiction",
+      "Fantasy fiction",
+      "Quests"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/14625829-M.jpg"
+  },
+  {
+    "id": 4,
+    "title": "The Picture of Dorian Gray",
+    "authorId": 3,
+    "author": "Oscar Wilde",
+    "categoryId": 3,
+    "category": "Fiction",
+    "year": 1890,
+    "pages": 254,
+    "price": 450,
+    "discount": {
+      "percent": 30,
+      "endsAt": "2026-04-10T23:59:59.000Z"
+    },
+    "stock": 12,
+    "description": "The Picture of Dorian Gray is a philosophical novel by Oscar Wilde. A revised and extended edition was published in April 1891. The story revolves around a portrait of Dorian Gray painted by Basil Hallward, a friend of Dorian's and an artist.",
+    "tags": [
+      "Gothic fiction",
+      "Philosophical novel",
+      "Classic"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/12818867-M.jpg"
+  },
+  {
+    "id": 5,
+    "title": "1984",
+    "authorId": 4,
+    "author": "George Orwell",
+    "categoryId": 4,
+    "category": "Science Fiction",
+    "year": 1949,
+    "pages": 328,
+    "price": 520,
+    "discount": null,
+    "stock": 0,
+    "description": "Nineteen Eighty-Four is a dystopian social science fiction novel and cautionary tale written by English author George Orwell. It was published on 8 June 1949 as Orwell's ninth and final book completed in his lifetime.",
+    "tags": [
+      "Dystopia",
+      "Political fiction",
+      "Social science fiction"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/14845540-M.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Гарри Поттер и философский камень",
+    "authorId": 5,
+    "author": "J.K. Rowling",
+    "categoryId": 2,
+    "category": "Fantasy",
+    "year": 1997,
+    "pages": 309,
+    "price": 750,
+    "discount": {
+      "percent": 15,
+      "endsAt": "2026-04-05T23:59:59.000Z"
+    },
+    "stock": 12,
+    "description": "Harry Potter and the Philosopher's Stone is a fantasy novel written by British author J. K. Rowling. The first novel in the Harry Potter series, it follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday.",
+    "tags": [
+      "Fantasy",
+      "Magic",
+      "Young adult"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/14812960-M.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Убить пересмешника",
+    "authorId": 6,
+    "author": "Harper Lee",
+    "categoryId": 3,
+    "category": "Fiction",
+    "year": 1960,
+    "pages": 281,
+    "price": 390,
+    "discount": null,
+    "stock": 12,
+    "description": "To Kill a Mockingbird is a novel by the American author Harper Lee. It was published in 1960 and has become a classic of modern American literature. The plot and characters are loosely based on Lee's observations of her family, her neighbors and an event that occurred near her hometown.",
+    "tags": [
+      "Classic",
+      "Southern Gothic",
+      "Legal drama"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/14350216-M.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Дюна",
+    "authorId": 7,
+    "author": "Frank Herbert",
+    "categoryId": 4,
+    "category": "Science Fiction",
+    "year": 1965,
+    "pages": 412,
+    "price": 850,
+    "discount": null,
+    "stock": 12,
+    "description": "Dune is a 1965 epic science fiction novel by American author Frank Herbert. Set in the distant future, the novel tells the story of young Paul Atreides, whose family accepts the stewardship of the planet Arrakis.",
+    "tags": [
+      "Science fiction",
+      "Space opera",
+      "Epic"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/13208775-M.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Сияние",
+    "authorId": 8,
+    "author": "Stephen King",
+    "categoryId": 5,
+    "category": "Horror",
+    "year": 1977,
+    "pages": 447,
+    "price": 670,
+    "discount": null,
+    "stock": 0,
+    "description": "The Shining is a horror novel by American author Stephen King. Published in 1977, it is King's third published novel. The setting and samples of the plot were inspired by King's personal experiences.",
+    "tags": [
+      "Horror",
+      "Psychological thriller",
+      "Supernatural"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/12889964-M.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Шерлок Холмс",
+    "authorId": 9,
+    "author": "Arthur Conan Doyle",
+    "categoryId": 6,
+    "category": "Mystery & Thriller",
+    "year": 1892,
+    "pages": 307,
+    "price": 420,
+    "discount": null,
+    "stock": 12,
+    "description": "The Adventures of Sherlock Holmes is a collection of twelve short stories by Arthur Conan Doyle, first published on 14 October 1892. It contains the earliest short stories featuring the consulting detective Sherlock Holmes.",
+    "tags": [
+      "Detective fiction",
+      "Mystery",
+      "Classic"
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/12360127-M.jpg"
+  }
+]

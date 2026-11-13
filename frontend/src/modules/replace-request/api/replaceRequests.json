@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "orderId": 1,
+    "itemIndex": 1,
+    "oldTitle": "1984",
+    "oldPrice": 520,
+    "newBookId": 8,
+    "newTitle": "Дюна",
+    "newPrice": 850,
+    "reason": "Книга '1984' тимчасово відсутня на складі. Пропонуємо 'Дюна' — аналогічний жанр наукової фантастики.",
+    "status": "pending",
+    "createdAt": "2026-03-28T14:30:00.000Z"
+  },
+  {
+    "id": 2,
+    "orderId": 4,
+    "itemIndex": 0,
+    "oldTitle": "Сияние",
+    "oldPrice": 670,
+    "newBookId": 10,
+    "newTitle": "Шерлок Холмс",
+    "newPrice": 420,
+    "reason": "Останній примірник 'Сияние' пошкоджений. Пропонуємо заміну з компенсацією різниці.",
+    "status": "approved",
+    "createdAt": "2026-03-25T10:15:00.000Z"
+  },
+  {
+    "id": 3,
+    "orderId": 2,
+    "itemIndex": 2,
+    "oldTitle": "Дюна",
+    "oldPrice": 850,
+    "newBookId": 7,
+    "newTitle": "Убить пересмешника",
+    "newPrice": 390,
+    "reason": "Книга 'Дюна' закінчилася, очікується наступне постачання через 2 тижні.",
+    "status": "rejected",
+    "createdAt": "2026-03-24T16:00:00.000Z"
+  }
+]

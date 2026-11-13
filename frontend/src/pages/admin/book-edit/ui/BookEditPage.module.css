@@ -1,0 +1,25 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.breadcrumbLink {
+  color: #6366f1;
+  font-weight: 500;
+  transition: opacity var(--transition);
+}
+
+.breadcrumbLink:hover {
+  opacity: 0.7;
+}
+
+.breadcrumbSep {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.breadcrumbCurrent {
+  color: var(--text-secondary);
+}

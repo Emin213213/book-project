@@ -1,0 +1,202 @@
+.hiddenInput {
+  display: none;
+}
+
+/* ---------- Dropzone ---------- */
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #FAFBFC;
+}
+
+.dropzone:hover,
+.dropzoneActive {
+  border-color: #6366F1;
+  background: rgba(99, 102, 241, 0.03);
+}
+
+.dropzoneActive {
+  transform: scale(1.01);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.08);
+}
+
+.dropzoneCompact {
+  padding: 16px;
+}
+
+.dropzoneCompact .dropzoneIcon .material-icons-outlined {
+  font-size: 1.8rem;
+}
+
+.dropzoneCompact .dropzoneText {
+  font-size: 0.82rem;
+}
+
+.dropzoneCompact .dropzoneHint {
+  display: none;
+}
+
+.dropzoneIcon {
+  margin-bottom: 8px;
+}
+
+.dropzoneIcon .material-icons-outlined {
+  font-size: 2.5rem;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.dropzone:hover .dropzoneIcon .material-icons-outlined,
+.dropzoneActive .dropzoneIcon .material-icons-outlined {
+  color: #6366F1;
+}
+
+.dropzoneText {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.dropzoneLink {
+  color: #6366F1;
+  font-weight: 600;
+}
+
+.dropzoneHint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Preview ---------- */
+.preview {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #FAFBFC;
+  animation: fadeIn 0.25s ease;
+}
+
+.previewCompact {
+  padding: 8px;
+  gap: 12px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.previewImageWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.previewImage {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: filter 0.2s ease;
+}
+
+.previewCompact .previewImage {
+  width: 56px;
+  height: 56px;
+}
+
+.previewImageWrap:hover .previewImage {
+  filter: brightness(0.7);
+}
+
+.previewOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.previewImageWrap:hover .previewOverlay {
+  opacity: 1;
+}
+
+.previewBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.previewBtn:hover {
+  background: var(--bg-white);
+  transform: scale(1.1);
+}
+
+.previewBtnDanger:hover {
+  background: #EF4444;
+  color: white;
+}
+
+.previewBtn .material-icons-outlined {
+  font-size: 0.9rem;
+}
+
+.previewInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.previewLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.previewChange {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #6366F1;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.15s ease;
+}
+
+.previewChange:hover {
+  opacity: 0.7;
+}
+
+.previewChange .material-icons-outlined {
+  font-size: 0.95rem;
+}

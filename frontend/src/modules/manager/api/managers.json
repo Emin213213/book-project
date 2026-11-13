@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "Олена Шевченко", "email": "olena@bookapp.ua", "role": "senior", "avatar": null },
+  { "id": 2, "name": "Андрій Мельник", "email": "andriy@bookapp.ua", "role": "manager", "avatar": null },
+  { "id": 3, "name": "Тетяна Бондаренко", "email": "tetyana@bookapp.ua", "role": "manager", "avatar": null }
+]

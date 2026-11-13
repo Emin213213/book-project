@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Олексій Іванов",
+    "email": "oleksiy@ukr.net",
+    "password": "123456",
+    "phone": "+380 (93) 555-12-34",
+    "avatar": null,
+    "createdAt": "2026-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Марія Петрова",
+    "email": "maria@i.ua",
+    "password": "123456",
+    "phone": "+380 (67) 222-33-44",
+    "avatar": null,
+    "createdAt": "2026-02-20T14:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Дмитро Козлов",
+    "email": "dmitro@meta.ua",
+    "password": "123456",
+    "phone": "",
+    "avatar": null,
+    "createdAt": "2026-03-10T09:00:00.000Z"
+  }
+]

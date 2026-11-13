@@ -1,0 +1,57 @@
+# Private notes in the project root (keep src/auth tracked)
+/auth/
+
+# Dependencies
+node_modules/
+
+# Build output and TypeScript cache
+/dist/
+/build/
+*.tsbuildinfo
+
+# Environment variables and local credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Uploaded files and local runtime data
+/storage/
+/uploads/
+/tmp/
+/temp/
+
+# Tests and tool caches
+/coverage/
+.nyc_output/
+.cache/
+.eslintcache
+.stylelintcache
+
+# Logs and process files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.pid
+*.pid.lock
+
+# Local editor settings and temporary files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+*:Zone.Identifier

@@ -1,0 +1,706 @@
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* ============================================
+   Steps indicator
+   ============================================ */
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 28px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-white);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.stepActive .stepCircle {
+  border-color: #6366F1;
+  color: #6366F1;
+}
+
+.stepDone .stepCircle {
+  border-color: #10B981;
+  background: #10B981;
+  color: white;
+}
+
+.stepDone .stepCircle .material-icons-outlined {
+  font-size: 1rem;
+}
+
+.stepLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.stepActive .stepLabel {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.stepDone .stepLabel {
+  color: #10B981;
+}
+
+.stepLine {
+  width: 40px;
+  height: 2px;
+  background: var(--border);
+  margin: 0 12px;
+  border-radius: 1px;
+  transition: background 0.25s;
+}
+
+.stepLineDone {
+  background: #10B981;
+}
+
+/* ============================================
+   Layout
+   ============================================ */
+.layout {
+  display: flex;
+  gap: 24px;
+}
+
+.form {
+  flex: 1;
+}
+
+.stepContent {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  animation: fadeSlide 0.25s ease;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.sectionTitle .material-icons-outlined {
+  font-size: 1.3rem;
+  color: #6366F1;
+}
+
+/* ============================================
+   Form fields
+   ============================================ */
+.group {
+  margin-bottom: 14px;
+}
+
+.label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.required {
+  color: #EF4444;
+}
+
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: #FAFBFC;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  border-color: #6366F1;
+  background: var(--bg-white);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.radioHidden {
+  display: none;
+}
+
+/* ============================================
+   Delivery
+   ============================================ */
+.deliveryOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.deliveryCard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: var(--bg-white);
+}
+
+.deliveryCard:hover {
+  border-color: #C7D2FE;
+}
+
+.deliveryCardActive {
+  border-color: #6366F1;
+  background: rgba(99, 102, 241, 0.03);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.06);
+}
+
+.deliveryIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #F3F4F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.deliveryCardActive .deliveryIcon {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.deliveryIcon .material-icons-outlined {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+}
+
+.deliveryCardActive .deliveryIcon .material-icons-outlined {
+  color: #6366F1;
+}
+
+.deliveryInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.deliveryName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.deliveryDesc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.deliveryPrice {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.deliveryFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+/* ============================================
+   Payment
+   ============================================ */
+.paymentOptions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.paymentCard {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+}
+
+.paymentCard:hover {
+  border-color: #C7D2FE;
+}
+
+.paymentCardActive {
+  border-color: #6366F1;
+  color: #6366F1;
+  background: rgba(99, 102, 241, 0.03);
+  font-weight: 600;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.06);
+}
+
+.paymentCard .material-icons-outlined {
+  font-size: 1.2rem;
+}
+
+/* ---------- Card form (Stripe-like) ---------- */
+.cardForm {
+  background: #FAFBFC;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.cardHeader .material-icons-outlined {
+  font-size: 1rem;
+  color: #10B981;
+}
+
+.cardLogos {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.cardInput {
+  font-family: 'SF Mono', 'Fira Code', ui-monospace, monospace;
+  letter-spacing: 0.05em;
+  background: var(--bg-white);
+}
+
+.cardRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cashNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px;
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.cashNote .material-icons-outlined {
+  font-size: 1.2rem;
+  color: #F59E0B;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.cashNote p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ============================================
+   Navigation buttons
+   ============================================ */
+.stepNav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.nextBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 28px;
+  background: #6366F1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: auto;
+}
+
+.nextBtn:hover {
+  background: #4F46E5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.nextBtn .material-icons-outlined {
+  font-size: 1.1rem;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.backBtn:hover {
+  border-color: #999;
+  color: var(--text-primary);
+}
+
+.backBtn .material-icons-outlined {
+  font-size: 1.1rem;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 32px;
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submitBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+}
+
+.submitBtn .material-icons-outlined {
+  font-size: 1.1rem;
+}
+
+/* ============================================
+   Summary sidebar
+   ============================================ */
+.summary {
+  width: 300px;
+  flex-shrink: 0;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.summaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summaryItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summaryImg {
+  width: 36px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.summaryInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.summaryName {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.summaryQty {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.summaryPrice {
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ---------- Promo code ---------- */
+.promoBlock {
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.promoRow {
+  display: flex;
+  gap: 6px;
+}
+
+.promoInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  outline: none;
+  background: #FAFBFC;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.15s;
+}
+
+.promoInput:focus {
+  border-color: #6366F1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.08);
+}
+
+.promoInput::placeholder {
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.promoBtn {
+  padding: 8px 14px;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.promoBtn:hover {
+  border-color: #6366F1;
+  color: #6366F1;
+}
+
+.promoBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.promoError {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: #EF4444;
+}
+
+.promoSuccess {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #10B981;
+}
+
+.promoSuccess .material-icons-outlined {
+  font-size: 0.9rem;
+}
+
+.summaryRows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Success
+   ============================================ */
+.successBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.successIcon .material-icons-outlined {
+  font-size: 3.5rem;
+  color: #10B981;
+}
+
+.successTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.successText {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  max-width: 360px;
+  line-height: 1.6;
+}
+
+.successBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 12px 24px;
+  background: var(--black);
+  color: var(--text-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.successBtn:hover {
+  background: #333;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .summary {
+    width: 100%;
+    position: static;
+  }
+
+  .steps {
+    overflow-x: auto;
+  }
+
+  .stepLabel {
+    display: none;
+  }
+
+  .deliveryFields {
+    grid-template-columns: 1fr;
+  }
+
+  .cardRow {
+    grid-template-columns: 1fr;
+  }
+}

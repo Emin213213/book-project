@@ -1,0 +1,201 @@
+.tree {
+  padding: 4px 0;
+  min-height: 60px;
+}
+
+/* ---------- Row ---------- */
+.rowWrap {
+  position: relative;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px 11px 12px;
+  border-bottom: 1px solid var(--border);
+  cursor: grab;
+  transition: background 0.12s ease;
+  user-select: none;
+  position: relative;
+}
+
+.rowWrap:last-child .row {
+  border-bottom: none;
+}
+
+.row:hover {
+  background: #F9FAFB;
+}
+
+.row:active {
+  cursor: grabbing;
+}
+
+/* ---------- Drag handle ---------- */
+.dragHandle {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  opacity: 0.4;
+  transition: opacity 0.12s ease;
+}
+
+.dragHandle .material-icons-outlined {
+  font-size: 1.2rem;
+}
+
+.row:hover .dragHandle {
+  opacity: 1;
+}
+
+/* ---------- Nesting visuals ---------- */
+.nestLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.nestIcon {
+  flex-shrink: 0;
+  color: rgba(99, 102, 241, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.nestIcon .material-icons-outlined {
+  font-size: 0.95rem;
+}
+
+/* ---------- Content ---------- */
+.rowContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
+.rowInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.rowName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowSlug {
+  display: inline-flex;
+  padding: 2px 8px;
+  background: #F3F4F6;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.rowCount {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ---------- Actions ---------- */
+.rowActions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+.row:hover .rowActions {
+  opacity: 1;
+}
+
+.actionBtn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.12s ease;
+  color: var(--text-muted);
+}
+
+.actionBtn .material-icons-outlined {
+  font-size: 1.05rem;
+}
+
+.actionBtn:hover {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366F1;
+}
+
+.actionBtnDanger:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+/* ---------- Drop indicator ---------- */
+.dropLine {
+  display: flex;
+  align-items: center;
+  height: 2px;
+  position: relative;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.dropDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6366F1;
+  flex-shrink: 0;
+  margin-left: -4px;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.dropBar {
+  flex: 1;
+  height: 2px;
+  background: #6366F1;
+  margin-right: 16px;
+}
+
+/* ---------- Empty ---------- */
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .rowSlug {
+    display: none;
+  }
+
+  .rowActions {
+    opacity: 1;
+  }
+}

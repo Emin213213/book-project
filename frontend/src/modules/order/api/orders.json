@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "managerId": 1,
+    "items": [
+      { "bookId": 1, "title": "Властелин колец", "price": 1290, "quantity": 1 },
+      { "bookId": 5, "title": "1984", "price": 520, "quantity": 2 }
+    ],
+    "customerName": "Олексій Іванов",
+    "customerEmail": "oleksiy@ukr.net",
+    "customerPhone": "+380 (93) 555-12-34",
+    "total": 2330,
+    "status": "completed",
+    "createdAt": "2026-03-15T10:23:00.000Z"
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "managerId": 2,
+    "items": [
+      { "bookId": 6, "title": "Гарри Поттер и философский камень", "price": 750, "quantity": 1 },
+      { "bookId": 2, "title": "Игра престолов", "price": 890, "quantity": 1 },
+      { "bookId": 8, "title": "Дюна", "price": 850, "quantity": 1 }
+    ],
+    "customerName": "Марія Петрова",
+    "customerEmail": "maria@i.ua",
+    "customerPhone": "+380 (67) 222-33-44",
+    "total": 2490,
+    "status": "processing",
+    "createdAt": "2026-03-22T14:05:00.000Z"
+  },
+  {
+    "id": 3,
+    "userId": 3,
+    "managerId": null,
+    "items": [
+      { "bookId": 4, "title": "The Picture of Dorian Gray", "price": 450, "quantity": 1 }
+    ],
+    "customerName": "Дмитро Козлов",
+    "customerEmail": "dmitro@meta.ua",
+    "customerPhone": "",
+    "total": 450,
+    "status": "pending",
+    "createdAt": "2026-03-27T09:30:00.000Z"
+  },
+  {
+    "id": 4,
+    "userId": 1,
+    "managerId": 1,
+    "items": [
+      { "bookId": 9, "title": "Сияние", "price": 670, "quantity": 1 },
+      { "bookId": 10, "title": "Шерлок Холмс", "price": 420, "quantity": 2 }
+    ],
+    "customerName": "Олексій Іванов",
+    "customerEmail": "oleksiy@ukr.net",
+    "customerPhone": "+380 (93) 555-12-34",
+    "total": 1510,
+    "status": "completed",
+    "createdAt": "2026-03-20T18:15:00.000Z"
+  },
+  {
+    "id": 5,
+    "userId": null,
+    "managerId": null,
+    "items": [
+      { "bookId": 3, "title": "Властелин колец – Братство кольца", "price": 690, "quantity": 1 },
+      { "bookId": 7, "title": "Убить пересмешника", "price": 390, "quantity": 1 }
+    ],
+    "customerName": "Ігор Волков",
+    "customerEmail": "igor@ukr.net",
+    "customerPhone": "+380 (97) 111-22-33",
+    "total": 1080,
+    "status": "cancelled",
+    "createdAt": "2026-03-18T12:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "userId": 2,
+    "managerId": 2,
+    "items": [
+      { "bookId": 1, "title": "Властелин колец", "price": 1290, "quantity": 2 },
+      { "bookId": 6, "title": "Гарри Поттер и философский камень", "price": 750, "quantity": 3 }
+    ],
+    "customerName": "Марія Петрова",
+    "customerEmail": "maria@i.ua",
+    "customerPhone": "+380 (67) 222-33-44",
+    "total": 4830,
+    "status": "processing",
+    "createdAt": "2026-03-28T20:45:00.000Z"
+  }
+]

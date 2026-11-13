@@ -1,0 +1,16 @@
+:root {
+  --bg: #F5F5F5;
+  --bg-white: #FFFFFF;
+  --black: #1A1A1A;
+  --card-bg: #1A1A1A;
+  --text-primary: #1A1A1A;
+  --text-white: #FFFFFF;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --border: #E5E7EB;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.2s ease;
+  --accent: #6366F1;
+  --danger: #EF4444;
+}

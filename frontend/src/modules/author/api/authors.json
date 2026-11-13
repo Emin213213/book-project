@@ -1,0 +1,11 @@
+[
+  { "id": 1, "name": "J.R.R. Tolkien", "country": "Велика Британія", "birthYear": 1892, "booksCount": 3, "photo": null },
+  { "id": 2, "name": "George R. R. Martin", "country": "США", "birthYear": 1948, "booksCount": 1, "photo": null },
+  { "id": 3, "name": "Oscar Wilde", "country": "Ірландія", "birthYear": 1854, "booksCount": 1, "photo": null },
+  { "id": 4, "name": "George Orwell", "country": "Велика Британія", "birthYear": 1903, "booksCount": 1, "photo": null },
+  { "id": 5, "name": "J.K. Rowling", "country": "Велика Британія", "birthYear": 1965, "booksCount": 1, "photo": null },
+  { "id": 6, "name": "Harper Lee", "country": "США", "birthYear": 1926, "booksCount": 1, "photo": null },
+  { "id": 7, "name": "Frank Herbert", "country": "США", "birthYear": 1920, "booksCount": 1, "photo": null },
+  { "id": 8, "name": "Stephen King", "country": "США", "birthYear": 1947, "booksCount": 1, "photo": null },
+  { "id": 9, "name": "Arthur Conan Doyle", "country": "Велика Британія", "birthYear": 1859, "booksCount": 1, "photo": null }
+]

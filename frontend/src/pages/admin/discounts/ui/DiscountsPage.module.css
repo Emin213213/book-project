@@ -1,0 +1,26 @@
+.addBtn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; background: var(--black); color: var(--text-white); border: none; border-radius: var(--radius-sm); font-family: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+.addBtn:hover { background: #333; }
+.addBtn .material-icons-outlined { font-size: 1.1rem; }
+
+.codeCell { padding: 4px 10px; background: #F3F4F6; border-radius: 6px; font-size: 0.85rem; font-family: 'SF Mono','Fira Code',monospace; font-weight: 600; color: var(--text-primary); }
+
+.activeBadge, .inactiveBadge, .expiredBadge { display: inline-flex; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.activeBadge { background: rgba(16,185,129,0.08); color: #10B981; }
+.inactiveBadge { background: #F3F4F6; color: var(--text-muted); }
+.expiredBadge { background: rgba(239,68,68,0.06); color: #EF4444; }
+
+.form { display: flex; flex-direction: column; gap: 16px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.fg { display: flex; flex-direction: column; gap: 6px; }
+.fl { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
+.req { color: #EF4444; }
+.fi { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 0.88rem; color: var(--text-primary); background: #FAFBFC; outline: none; transition: all 0.15s; }
+.fi:focus { border-color: #6366F1; background: var(--bg-white); box-shadow: 0 0 0 3px rgba(99,102,241,0.08); }
+.fi::placeholder { color: var(--text-muted); }
+
+.formActions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 16px; border-top: 1px solid var(--border); }
+.cancelBtn { padding: 9px 18px; background: transparent; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+.cancelBtn:hover { border-color: #999; color: var(--text-primary); }
+.submitBtn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; background: #6366F1; color: white; border: none; border-radius: 8px; font-family: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+.submitBtn:hover { background: #4F46E5; }
+.submitBtn .material-icons-outlined { font-size: 1rem; }
