@@ -56,9 +56,6 @@ class SyncPermissionsCommand {
             if (configuration.roles.includes(superAdmin)) {
                 rolesAndPermissions[superAdmin].push(permission)
             }
-            if (configuration.roles.includes(admin)) {
-                rolesAndPermissions[admin].push(permission)
-            }
             if (configuration.roles.includes(manager)) {
                 rolesAndPermissions[manager].push(permission)
             }
@@ -66,6 +63,8 @@ class SyncPermissionsCommand {
                 rolesAndPermissions[moderator].push(permission)
             }
         }
+
+        rolesAndPermissions[admin] = await this.permissionRepository.findAll();
 
         await this.syncSystemRoles(rolesAndPermissions)
 

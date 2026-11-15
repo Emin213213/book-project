@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { ForbiddenException, Inject, Injectable } from "@nestjs/common";
 
 import type { Uuid } from "@/common/domain/value-objects/uuid.vo";
 import { RoleNotFoundException } from "@/user/domain/exceptions/role-not-found.exception";
@@ -16,6 +16,10 @@ export class DeleteRoleAction {
     const role = await this.roleRepository.findById(id);
     if (role === undefined) {
       throw new RoleNotFoundException(id.toString());
+    }
+
+    if (role.isSystem) {
+      throw new ForbiddenException("System roles cannot be deleted");
     }
 
     await this.roleRepository.delete(id);

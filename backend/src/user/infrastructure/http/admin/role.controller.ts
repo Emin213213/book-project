@@ -28,8 +28,8 @@ import { Permissions, } from "@/user/domain/constants/permission";
 import { AuthGuard } from "@/user/infrastructure/http/guards/auth.guard";
 import { PermissionGuard } from "@/user/infrastructure/http/guards/permission.guard";
 import {REQUIRED_PERMISSIONS} from "@/user/infrastructure/decorators/required-permission.decorator";
-import {PaginatedResource} from "@/common/infrastructure/http/resources/paginated.resource";
-import {PermissionService} from "@/user/infrastructure/service/permission.service";
+import {PermissionService} from "@/user/application/services/permission.service";
+import {GetByIdAction} from "@/user/application/actions/admin/role/get-by-id.action";
 
 @Injectable()
 @Controller("admin/roles")
@@ -39,6 +39,7 @@ export class RoleController {
     private readonly findAllRoleAction: FindAllRoleAction,
     private readonly updateRoleAction: UpdateRoleAction,
     private readonly deleteRoleAction: DeleteRoleAction,
+    private  readonly  getByIdAction:GetByIdAction,
     @Inject() private  readonly  permissionService:PermissionService,
   ) {}
 
@@ -48,16 +49,22 @@ export class RoleController {
   @REQUIRED_PERMISSIONS([Permissions.VIEW_ROLES])
   public async findAll(
       @Query() context: FindAllRolesDto,
-  ): Promise<PaginatedResource<RoleResouce>> {
-
-    const output = await this.findAllRoleAction.handle(context);
-
-    return   PaginatedResource.make<RoleResouce>(RoleResouce.collection(output.roles,this.permissionService),output.total,{page:output.page, per_page:output.per_page})
-
+  ): Promise<{ data: RoleResouce[] }> {
+    const roles = await this.findAllRoleAction.handle(context);
+    return { data: RoleResouce.collection(roles, this.permissionService) };
   }
 
 
+  @Get(":id")
+  @UseGuards(AuthGuard, PermissionGuard)
+  @REQUIRED_PERMISSIONS([Permissions.VIEW_ROLES, Permissions.VIEW_PERMISSIONS])
+  public async getById(
+    @Param("id", new ParseUUIDPipe()) id: string,
+  ): Promise<RoleResouce> {
+    const role = await this.getByIdAction.handle(Uuid.fromString(id));
 
+    return RoleResouce.make(role, this.permissionService);
+  }
 
   @Post()
   @UseGuards(AuthGuard, PermissionGuard)

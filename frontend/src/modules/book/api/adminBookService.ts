@@ -1,4 +1,4 @@
-import { API_URL } from '@/shared/config/api.ts';
+import { API_CLIENT } from '@/shared/api/apiClient';
 import type {
   AdminBook,
   AdminBookInput,
@@ -9,7 +9,7 @@ import type {
   PaginationMetadata,
 } from '../model/admin-book.types';
 
-const ADMIN_BOOKS_URL = `${API_URL}/book/admin/books`;
+const ADMIN_BOOKS_URL = '/book/admin/books';
 
 interface PaginatedResponse<T> {
   readonly data: readonly T[];
@@ -35,14 +35,6 @@ function createBookFormData(input: Partial<AdminBookInput>): FormData {
   return formData;
 }
 
-async function parseBookResponse(response: Response): Promise<AdminBook> {
-  if (!response.ok) {
-    throw new Error(`Book request failed: ${response.status}`);
-  }
-
-  return response.json() as Promise<AdminBook>;
-}
-
 /** Получает список книг для административной таблицы. */
 export async function getAdminBooks(query: AdminBooksQuery = {}): Promise<AdminBooksResponse> {
   const searchParams = new URLSearchParams({
@@ -62,30 +54,22 @@ export async function getAdminBooks(query: AdminBooksQuery = {}): Promise<AdminB
     searchParams.set('categorySlug', query.categorySlug);
   }
 
-  const response = await fetch(`${ADMIN_BOOKS_URL}?${searchParams.toString()}`);
-
-  if (!response.ok) {
-    throw new Error(`Failed to load admin books: ${response.status}`);
-  }
-
-  return response.json() as Promise<AdminBooksResponse>;
+  const response = await API_CLIENT.get<AdminBooksResponse>(ADMIN_BOOKS_URL, {
+    params: searchParams,
+  });
+  return response.data;
 }
 
 /** Получает административную карточку книги по slug. */
 export async function getAdminBook(slug: string): Promise<AdminBook> {
-  const response = await fetch(`${ADMIN_BOOKS_URL}/${encodeURIComponent(slug)}`);
-
-  return parseBookResponse(response);
+  const response = await API_CLIENT.get<AdminBook>(`${ADMIN_BOOKS_URL}/${encodeURIComponent(slug)}`);
+  return response.data;
 }
 
 /** Создаёт книгу через multipart/form-data. */
 export async function createAdminBook(input: AdminBookInput): Promise<AdminBook> {
-  const response = await fetch(ADMIN_BOOKS_URL, {
-    method: 'POST',
-    body: createBookFormData(input),
-  });
-
-  return parseBookResponse(response);
+  const response = await API_CLIENT.post<AdminBook>(ADMIN_BOOKS_URL, createBookFormData(input));
+  return response.data;
 }
 
 /** Частично обновляет книгу по её текущему slug. */
@@ -93,23 +77,16 @@ export async function updateAdminBook(
   slug: string,
   input: Partial<AdminBookInput>,
 ): Promise<AdminBook> {
-  const response = await fetch(`${ADMIN_BOOKS_URL}/${encodeURIComponent(slug)}`, {
-    method: 'PATCH',
-    body: createBookFormData(input),
-  });
-
-  return parseBookResponse(response);
+  const response = await API_CLIENT.patch<AdminBook>(
+    `${ADMIN_BOOKS_URL}/${encodeURIComponent(slug)}`,
+    createBookFormData(input),
+  );
+  return response.data;
 }
 
 /** Безвозвратно удаляет книгу по slug. */
 export async function deleteAdminBook(slug: string): Promise<void> {
-  const response = await fetch(`${ADMIN_BOOKS_URL}/${encodeURIComponent(slug)}`, {
-    method: 'DELETE',
-  });
-
-  if (!response.ok) {
-    throw new Error(`Book deletion failed: ${response.status}`);
-  }
+  await API_CLIENT.delete(`${ADMIN_BOOKS_URL}/${encodeURIComponent(slug)}`);
 }
 
 /** Получает справочники авторов и категорий для формы книги. */
@@ -118,16 +95,12 @@ export async function getAdminBookReferences(): Promise<{
   readonly categories: readonly BookCategory[];
 }> {
   const [authorsResponse, categoriesResponse] = await Promise.all([
-    fetch(`${API_URL}/book/admin/authors?page=1&per_page=100`),
-    fetch(`${API_URL}/book/admin/categories?page=1&per_page=100`),
+    API_CLIENT.get<PaginatedResponse<BookAuthor>>('/book/admin/authors', {
+      params: { page: 1, per_page: 100 },
+    }),
+    API_CLIENT.get<PaginatedResponse<BookCategory>>('/book/admin/categories', {
+      params: { page: 1, per_page: 100 },
+    }),
   ]);
-
-  if (!authorsResponse.ok || !categoriesResponse.ok) {
-    throw new Error('Failed to load book form references');
-  }
-
-  const authors = (await authorsResponse.json()) as PaginatedResponse<BookAuthor>;
-  const categories = (await categoriesResponse.json()) as PaginatedResponse<BookCategory>;
-
-  return { authors: authors.data, categories: categories.data };
+  return { authors: authorsResponse.data.data, categories: categoriesResponse.data.data };
 }

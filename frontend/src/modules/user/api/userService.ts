@@ -1,7 +1,7 @@
 import type { User, LoginData, RegisterData, UnnothorizedTokenData } from '../model/user.types';
 import type { AuthResponse, AuthSession } from '../model/user.types';
 import initialUsers from './users.json';
-import { API_URL } from '@/shared/config/api.ts';
+import { API_CLIENT } from '@/shared/api/apiClient';
 
 interface UserRecord {
   id: number;
@@ -27,22 +27,9 @@ function toUser(record: UserRecord): User {
   };
 }
 
-export async function unnathorizedToken(data: UnnothorizedTokenData) {
-  const res = await fetch(`${API_URL}/unnathorized-password`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  if (res.ok) {
-    const data = await res.json();
-
-    return data;
-  } else {
-    console.error('Проблема при запросе в Login');
-  }
+/** Отправляет запрос на восстановление доступа. */
+export async function unnathorizedToken(input: UnnothorizedTokenData): Promise<void> {
+  await API_CLIENT.post('/unnathorized-password', input);
 }
 
 /** Преобразует ответ авторизации в состояние клиентской сессии. */
@@ -66,28 +53,24 @@ function toAuthSession(response: AuthResponse): AuthSession {
 
 /** Выполняет вход и возвращает профиль с access-токеном. */
 export async function login(input: LoginData): Promise<AuthSession | undefined> {
-  const response = await fetch(`${API_URL}/auth/login`, {
-    method: 'POST',
-    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-    body: JSON.stringify(input),
+  const response = await API_CLIENT.post<AuthResponse>('/auth/login', input, {
+    validateStatus: (status) => status >= 200 && status < 500,
   });
-  if (!response.ok) {
+  if (response.status >= 400) {
     return undefined;
   }
-  return toAuthSession((await response.json()) as AuthResponse);
+  return toAuthSession(response.data);
 }
 
 /** Обменивает код Google на клиентскую сессию. */
 export async function loginWithGoogle(code: string): Promise<AuthSession | undefined> {
-  const response = await fetch(`${API_URL}/auth/oauth/google/confirm`, {
-    method: 'POST',
-    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-    body: JSON.stringify({ code }),
+  const response = await API_CLIENT.post<AuthResponse>('/auth/oauth/google/confirm', { code }, {
+    validateStatus: (status) => status >= 200 && status < 500,
   });
-  if (!response.ok) {
+  if (response.status >= 400) {
     return undefined;
   }
-  return toAuthSession((await response.json()) as AuthResponse);
+  return toAuthSession(response.data);
 }
 
 export async function register(data: RegisterData): Promise<User> {

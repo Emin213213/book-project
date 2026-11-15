@@ -3,16 +3,21 @@ import { Link } from 'react-router-dom';
 import Icon from '@/shared/ui/Icon.tsx';
 import Loader from '@/shared/ui/Loader.tsx';
 import styles from './VerifyEmailPage.module.css';
-import {API_URL} from "@/shared/config/api.ts";
+import { API_CLIENT } from '@/shared/api/apiClient';
 
 export default function VerifyEmailPage() {
   const [verified, setVerified] = useState(false);
+  const [error, setError] = useState<string>();
   useEffect(() => {
-    fetch(`${API_URL}/verification-email-token`);
-
-    const timer = setTimeout(() => setVerified(true), 1500);
-    return () => clearTimeout(timer);
-
+    const controller = new AbortController();
+    void API_CLIENT.get('/verification-email-token', { signal: controller.signal })
+      .then(() => setVerified(true))
+      .catch((error: unknown) => {
+        if (!controller.signal.aborted) {
+          setError(error instanceof Error ? error.message : 'Ошибка активации');
+        }
+      });
+    return () => controller.abort();
   }, []);
 
   return (
@@ -24,9 +29,9 @@ export default function VerifyEmailPage() {
           </div>
           <h1 className={styles.title}>Активация аккаунта</h1>
           <p className={styles.subtitle}>
-            {verified
+            {error ?? (verified
               ? 'Ваш аккаунт активирован'
-              : 'Проверяем вашу ссылку...'}
+              : 'Проверяем вашу ссылку...')}
           </p>
         </div>
 

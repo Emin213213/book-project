@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Icon from '@/shared/ui/Icon.tsx';
 import styles from './ResetPasswordPage.module.css';
-import { API_URL } from '@/shared/config/api.ts';
+import { API_CLIENT } from '@/shared/api/apiClient';
 
 export default function ResetPasswordPage() {
     const [password, setPassword] = useState('');
@@ -30,32 +30,15 @@ export default function ResetPasswordPage() {
         }
 
         try {
-            const res = await fetch(
-                `${API_URL}/auth/reset-password?token=${token}`,
-                {
-                    method: 'POST',
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        password,
-                        passwordConfirmation: confirm,
-                    }),
-                },
-            );
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                setError(data.message || 'Ошибка при смене пароля');
-                return;
-            }
+            await API_CLIENT.post('/auth/reset-password', {
+                password,
+                passwordConfirmation: confirm,
+            }, { params: { token } });
 
             setDone(true);
         } catch (err) {
             console.error(err);
-            setError('Ошибка соединения с сервером');
+            setError(err instanceof Error ? err.message : 'Ошибка соединения с сервером');
         }
     };
 

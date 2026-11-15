@@ -5,7 +5,7 @@ import type {Role} from "@/user/domain/entities/role.entity";
 export const ROLE_REPOSITORY = Symbol("ROLE_REPOSITORY");
 
 export interface IRoleRepository {
-    findAll(page: number, per_page: number, role?: string);
+    findAll(role?: string): Promise<Role[]>;
 
     findById(id: Uuid): Promise<Role | undefined>;
 

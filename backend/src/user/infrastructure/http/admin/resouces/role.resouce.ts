@@ -1,5 +1,5 @@
 import type {Role} from "@/user/domain/entities/role.entity";
-import {PermissionService} from "@/user/infrastructure/service/permission.service";
+import {PermissionService} from "@/user/application/services/permission.service";
 
 /** Представляет роль и её разрешения в ответе API. */
 
