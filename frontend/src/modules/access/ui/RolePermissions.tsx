@@ -77,7 +77,7 @@ function PermissionHeader({ actions }: { readonly actions: readonly string[] }):
 export default function RolePermissions({ role }: RolePermissionsProps): ReactElement {
   const { permissions, isDirty, togglePermission, resetPermissions } = useRolePermissionsDraft(role);
   const [savedPermissions, setSavedPermissions] = useState<AdminRole['permissions']>();
-  const sections = [...new Set([...PERMISSION_SECTIONS.keys(), ...Object.keys(permissions)])];
+  const sections = [...new Set([...SECTION_LABELS.keys(), ...Object.keys(permissions)])];
   const actions = [
     ...new Set([...PERMISSION_ACTIONS.keys(), ...Object.values(permissions).flat()]),
   ];
