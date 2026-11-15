@@ -25,6 +25,7 @@ import { HasherService } from "@/common/application/services/hasher.service";
 import { FindAllPermissionAction } from "@/user/application/actions/admin/permission/find-all-permission.action";
 import { CreateRoleAction } from "@/user/application/actions/admin/role/create-role.action";
 import { DeleteRoleAction } from "@/user/application/actions/admin/role/delete-role.action";
+import { GetByIdAction } from "@/user/application/actions/admin/role/get-by-id.action";
 import { FindAllRoleAction } from "@/user/application/actions/admin/role/find-all-role.action";
 import { UpdateRoleAction } from "@/user/application/actions/admin/role/update-role.action";
 import { ConfirmOauthAction } from "@/user/application/actions/confirm-oauth.action";
@@ -46,10 +47,11 @@ import { authConfig } from "@/user/infrastructure/config/auth.config";
 import { OauthConfig } from "@/user/infrastructure/config/oauth.config";
 import { PermissionController } from "@/user/infrastructure/http/admin/permission.controller";
 import { RoleController } from "@/user/infrastructure/http/admin/role.controller";
+import { CurrentAccessController } from "./infrastructure/http/customer/current-access.controller";
 import { AuthController } from "@/user/infrastructure/http/customer/auth.controller";
 import { AuthGuard } from "@/user/infrastructure/http/guards/auth.guard";
 import { PermissionGuard } from "@/user/infrastructure/http/guards/permission.guard";
-import {PermissionService} from "@/user/infrastructure/service/permission.service";
+import {PermissionService} from "@/user/application/services/permission.service";
 
 @Module({
   imports: [
@@ -57,7 +59,7 @@ import {PermissionService} from "@/user/infrastructure/service/permission.servic
     ConfigModule.forFeature(OauthConfig),
     ConfigModule.forFeature(authConfig),
   ],
-  controllers: [AuthController, RoleController, PermissionController],
+  controllers: [CurrentAccessController, AuthController, RoleController, PermissionController],
   providers: [
     AuthConfigReader,
     SessionIssuer,
@@ -84,6 +86,7 @@ import {PermissionService} from "@/user/infrastructure/service/permission.servic
     UnnauthorizedResetAction,
     CreateRoleAction,
     FindAllRoleAction,
+    GetByIdAction,
     DeleteRoleAction,
     UpdateRoleAction,
     AuthGuard,

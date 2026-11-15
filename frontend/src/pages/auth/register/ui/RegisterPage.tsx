@@ -3,7 +3,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import {useUserStore} from '@/modules/user';
 import Icon from '@/shared/ui/Icon.tsx';
 import styles from '@/shared/ui/AuthForm.module.css';
-import {API_URL} from "@/shared/config/api.ts";
+import { API_CLIENT } from '@/shared/api/apiClient';
 import {ErrorCode} from "@/modules/user";
 
 type AuthMethod = 'email' | 'phone';
@@ -71,22 +71,17 @@ export default function RegisterPage() {
         }
 
         try {
-            const res = await fetch(`${API_URL}/users`, {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(user)
-            })
+            const res = await API_CLIENT.post<ValidationErrorResponse & { errorCode: string; statusCode: number }>('/users', user, {
+                validateStatus: (status) => status >= 200 && status < 500,
+            });
 
-            if (res.ok) {
+            if (res.status >= 200 && res.status < 300) {
 
-                const data = await res.json()
+                const data = res.data
 
                 console.log(data)
             } else if (res.status === 422) {
-                const data = await res.json()
+                const data = res.data
                 setErrors(data)
 
                 console.log('res data',)
@@ -95,7 +90,7 @@ export default function RegisterPage() {
                     message: string,
                     errorCode: string,
                     statusCode: number
-                } = await res.json()
+                } = res.data
                 console.log(data)
                 console.log(parserErrorCode(data.errorCode))
 

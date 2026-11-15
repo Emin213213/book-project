@@ -7,13 +7,13 @@ export type AdminRole = {
   readonly permissions: Readonly<Record<string, readonly string[]>>;
 };
 
-/** Страница ролей с метаданными пагинации. */
+/** Список всех ролей, соответствующих поиску. */
 export type AdminRolesResponse = {
   readonly data: readonly AdminRole[];
-  readonly meta: {
-    readonly current_page: number;
-    readonly last_page: number;
-    readonly per_page: number;
-    readonly total: number;
-  };
+};
+
+/** Поля формы редактирования роли. */
+export type UpdateAdminRole = {
+  readonly name: string;
+  readonly permissions: AdminRole["permissions"];
 };

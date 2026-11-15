@@ -15,6 +15,8 @@ import { UnnauthorizedAction } from '@/pages/customer/unnauthorized-action/ui/Un
 import { FavoritesPage } from '@/pages/favorites';
 import { ProfilePage } from '@/pages/profile';
 import PublicLayout from '../layouts/PublicLayout';
+import ProtectedRoute from './ProtectedRoute';
+import RestrictedRoute from './RestrictedRoute';
 
 export const customerRoutes: RouteObject = {
   element: <PublicLayout />,
@@ -24,14 +26,24 @@ export const customerRoutes: RouteObject = {
     { path: 'favorites', element: <FavoritesPage /> },
     { path: 'author/:id', element: <AuthorPage /> },
     { path: 'cart', element: <CartPage /> },
-    { path: 'checkout', element: <CheckoutPage /> },
-    { path: 'login', element: <LoginPage /> },
-    { path: 'register', element: <RegisterPage /> },
-    { path: 'forgot-password', element: <ForgotPasswordPage /> },
     {path:'unnauthorization-action', element:<UnnauthorizedAction/> },
     { path: 'reset-password', element: <ResetPasswordPage /> },
     { path: 'verify-email', element: <VerifyEmailPage /> },
-    { path: 'profile', element: <ProfilePage /> },
-    { path: 'oauth/google/callback', element: <GoogleConfirmPage /> },
+    {
+      element: <RestrictedRoute />,
+      children: [
+        { path: 'login', element: <LoginPage /> },
+        { path: 'register', element: <RegisterPage /> },
+        { path: 'forgot-password', element: <ForgotPasswordPage /> },
+        { path: 'oauth/google/callback', element: <GoogleConfirmPage /> },
+      ],
+    },
+    {
+      element: <ProtectedRoute />,
+      children: [
+        { path: 'checkout', element: <CheckoutPage /> },
+        { path: 'profile', element: <ProfilePage /> },
+      ],
+    },
   ],
 };

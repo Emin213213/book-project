@@ -1,36 +1,68 @@
-import { API_URL } from '@/shared/config/api';
-import type { AdminRolesResponse } from '../model/admin-role.types';
-
-const PAGE_SIZE = 25;
-const ADMIN_ROLES_URL = `${API_URL}/admin/roles`;
+import { API_CLIENT } from "@/shared/api/apiClient";
+import type {
+  AdminRole,
+  AdminRolesResponse,
+  UpdateAdminRole,
+} from "../model/admin-role.types";
 
 type AdminRolesQuery = {
-  readonly page: number;
   readonly role: string;
-  readonly accessToken: string | undefined;
   readonly signal?: AbortSignal;
 };
 
-/** Получает страницу ролей с фильтром по названию. */
+/** Получает все роли с фильтром по названию. */
 export async function getAdminRoles({
-  page,
   role,
-  accessToken,
   signal,
 }: AdminRolesQuery): Promise<AdminRolesResponse> {
-  if (!accessToken) {
-    throw new Error('Увійдіть у свій обліковий запис для перегляду ролей');
-  }
-  const params = new URLSearchParams({ page: String(page), per_page: String(PAGE_SIZE) });
-  if (role) {
-    params.set('role', role);
-  }
-  const response = await fetch(`${ADMIN_ROLES_URL}?${params}`, {
+  const response = await API_CLIENT.get<AdminRolesResponse>("/admin/roles", {
+    params: role ? { role } : undefined,
     signal,
-    headers: { Authorization: `Bearer ${accessToken}` },
   });
-  if (!response.ok) {
-    throw new Error(`Не вдалося завантажити ролі: HTTP ${response.status}`);
-  }
-  return response.json() as Promise<AdminRolesResponse>;
+  return response.data;
+}
+
+/** Получает выбранную роль вместе с её разрешениями. */
+export async function getAdminRole(
+  roleId: string,
+  signal?: AbortSignal,
+): Promise<AdminRole> {
+  const response = await API_CLIENT.get<AdminRole>(
+    `/admin/roles/${encodeURIComponent(roleId)}`,
+    {
+      signal,
+    },
+  );
+  return response.data;
+}
+
+/** Сохраняет название и полный набор разрешений роли. */
+export async function updateAdminRole(
+  roleId: string,
+  input: UpdateAdminRole,
+): Promise<AdminRole> {
+  const response = await API_CLIENT.patch<AdminRole>(
+    `/admin/roles/${encodeURIComponent(roleId)}`,
+    {
+      name: input.name,
+      permissions: Object.entries(input.permissions).flatMap(
+        ([module, actions]) => actions.map((action) => `${module}.${action}`),
+      ),
+    },
+  );
+  return response.data;
+}
+
+/** Создаёт несистемную роль без разрешений. */
+export async function createAdminRole(input: {
+  readonly name: string;
+  readonly slug: string;
+}): Promise<AdminRole> {
+  const response = await API_CLIENT.post<AdminRole>("/admin/roles", input);
+  return response.data;
+}
+
+/** Удаляет несистемную роль. */
+export async function deleteAdminRole(roleId: string): Promise<void> {
+  await API_CLIENT.delete(`/admin/roles/${encodeURIComponent(roleId)}`);
 }

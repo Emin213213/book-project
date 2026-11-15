@@ -41,7 +41,35 @@ export default [
             DefaultAdminRoleName.SUPER_ADMIN,
             DefaultAdminRoleName.ADMIN
         ]
-    }
-
-
-]
+    },
+    {
+        name: Permissions.VIEW_DASHBOARD,
+        description: "View Dashboard",
+        group: PermissionGroup.DASHBOARD,
+        roles: [DefaultAdminRoleName.SUPER_ADMIN, DefaultAdminRoleName.ADMIN],
+    },
+    {
+        name: Permissions.VIEW_PERMISSIONS,
+        description: "View Permissions",
+        group: PermissionGroup.PERMISSIONS_MANAGEMENT,
+        roles: [DefaultAdminRoleName.SUPER_ADMIN, DefaultAdminRoleName.ADMIN],
+    },
+    {
+        name: Permissions.CREATE_PERMISSIONS,
+        description: "Create Permissions",
+        group: PermissionGroup.PERMISSIONS_MANAGEMENT,
+        roles: [DefaultAdminRoleName.SUPER_ADMIN, DefaultAdminRoleName.ADMIN],
+    },
+    {
+        name: Permissions.UPDATE_PERMISSIONS,
+        description: "Update Permissions",
+        group: PermissionGroup.PERMISSIONS_MANAGEMENT,
+        roles: [DefaultAdminRoleName.SUPER_ADMIN, DefaultAdminRoleName.ADMIN],
+    },
+    {
+        name: Permissions.DELETE_PERMISSIONS,
+        description: "Delete Permissions",
+        group: PermissionGroup.PERMISSIONS_MANAGEMENT,
+        roles: [DefaultAdminRoleName.SUPER_ADMIN, DefaultAdminRoleName.ADMIN],
+    },
+];

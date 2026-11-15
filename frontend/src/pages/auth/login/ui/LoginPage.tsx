@@ -1,14 +1,16 @@
+import { getAuthRedirect } from '@/app/router/authRedirect';
 import {useState, type FormEvent} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {useUserStore} from '@/modules/user';
 import Icon from '@/shared/ui/Icon.tsx';
 import styles from '@/shared/ui/AuthForm.module.css';
-import {API_URL} from "@/shared/config/api.ts";
+import { API_CLIENT } from '@/shared/api/apiClient';
 
 type AuthMethod = 'email' | 'phone';
 
 export default function LoginPage() {
     const navigate = useNavigate();
+    const location = useLocation();
     const {login, error, clearError} = useUserStore();
     const [method, setMethod] = useState<AuthMethod>('email');
     const [email, setEmail] = useState('');
@@ -29,7 +31,7 @@ export default function LoginPage() {
             const success = await login(user);
 
             if (success) {
-                navigate('/')
+                navigate(getAuthRedirect(location.search), { replace: true })
             } else {
                 console.log('Ошибка при запросе пост')
             }
@@ -46,19 +48,13 @@ export default function LoginPage() {
 
     const handleGoogleLogin = async () => {
         try {
-            const res = await fetch(`${API_URL}/auth/oauth/google/uri`)
-
-            if (!res.ok) {
-                throw new Error('Ошибка при смене пароля');
-            }
-
-            const result = await res.json();
+            const { data: result } = await API_CLIENT.get<{ uri: string }>('/auth/oauth/google/uri');
 
             console.log(result.uri);
 
             window.location.assign(result.uri);
 
-            navigate('/');
+            navigate(getAuthRedirect(location.search), { replace: true });
         } catch (error: unknown) {
             if (error instanceof Error) {
                 console.error(error.message);
@@ -70,7 +66,7 @@ export default function LoginPage() {
         e.preventDefault();
         if (secretCode.length === 4) {
             const success = await login({email: 'oleksiy@ukr.net', password: '12345678E!'});
-            if (success) navigate('/');
+            if (success) navigate(getAuthRedirect(location.search), { replace: true });
         }
     };
 

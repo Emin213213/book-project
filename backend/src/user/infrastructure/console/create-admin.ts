@@ -7,11 +7,9 @@ import { Uuid } from "@/common/domain/value-objects/uuid.vo";
 import { Role } from "@/user/domain/entities/role.entity";
 import { User } from "@/user/domain/entities/user.entity";
 import { UserEmailAlreadyExistsException } from "@/user/domain/exceptions/user-email-already-exists.exception";
-import type { IPermissionRepository } from "@/user/domain/repositories/permission.repository.interface";
 import type { IRoleRepository } from "@/user/domain/repositories/role.repository.interface";
 import { Email } from "@/user/domain/value-objects/email.vo";
 import { RoleRepository } from "@/user/infrastructure/repository/role.repository";
-import { PermissionRepository } from "@/user/infrastructure/repository/permission.repository";
 import dataSource from "../../../../data-source";
 
 const MIN_PASSWORD_LENGTH = 8;
@@ -35,7 +33,6 @@ class CreateAdminCommand {
     private readonly database: DataSource,
     private readonly roleRepository: IRoleRepository,
     private readonly hasher: Pick<HasherService, "hash">,
-    private readonly permissionRepository: IPermissionRepository,
   ) {}
 
   public async run(): Promise<void> {
@@ -51,10 +48,6 @@ class CreateAdminCommand {
       return;
     }
 
-    const permissions = await this.readPermission();
-
-   await  this.roleRepository.syncPermission(role.getId(),permissions)
-
     const credentials = await this.readCredentials();
 
     if (!credentials) {
@@ -67,6 +60,7 @@ class CreateAdminCommand {
     await this.database.transaction(async (manager) => {
       await this.assertEmailAvailable(email, manager);
 
+      await this.assignAdminPermissions(role, manager);
       const user = this.createUser({ email, role, ...credentials, password });
       await manager.save(user);
       await manager
@@ -78,10 +72,18 @@ class CreateAdminCommand {
     prompt.outro("Пользователь успешно создан");
   }
 
-  private async readPermission(): Promise<Uuid[]> {
-    const permisssions = await this.permissionRepository.findAll();
-
-    return permisssions.map((permission) => permission.getId());
+  private async assignAdminPermissions(role: Role, manager: EntityManager): Promise<void> {
+    if (role.slug !== "admin") {
+      return;
+    }
+    const permissions = await manager.find(Permission);
+    const assignedIds = new Set(role.permissions.map((permission) => permission.getId().toString()));
+    const missingIds = permissions
+      .map((permission) => permission.getId().toString())
+      .filter((permissionId) => !assignedIds.has(permissionId));
+    if (missingIds.length > 0) {
+      await manager.createQueryBuilder().relation(Role, "permissions").of(role.id).add(missingIds);
+    }
   }
 
   private async readEmail(): Promise<Email | undefined> {
@@ -112,11 +114,7 @@ class CreateAdminCommand {
     if (slug === undefined) {
       return;
     }
-    let role = await this.roleRepository.findBySlug(slug);
-
-    if (!role) {
-      role = Role.create(Uuid.generate(), "Admin", "admin", true);
-    }
+    const role = await this.roleRepository.findBySlug(slug);
 
     if (!role) {
       prompt.log.error("Выбранная роль не найдена");
@@ -215,7 +213,6 @@ async function main(): Promise<void> {
       dataSource,
       new RoleRepository(dataSource.getRepository(Role), dataSource),
       new HasherService(),
-      new PermissionRepository(dataSource.getRepository(Permission),dataSource),
     );
     await command.run();
   } finally {

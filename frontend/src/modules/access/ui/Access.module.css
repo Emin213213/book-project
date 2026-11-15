@@ -285,3 +285,19 @@
     flex-basis: 100%;
   }
 }
+
+.editorFieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 20px;
+  border: 0;
+}
+
+.editorFieldset > .label {
+  margin-bottom: 20px;
+}
+
+.danger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

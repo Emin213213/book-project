@@ -1,27 +1,29 @@
-import { useState } from 'react';
-import type { ReactElement } from 'react';
+import type { ReactElement } from "react";
 
-import RolesList from '@/modules/access/ui/RolesList';
-import styles from '@/modules/access/ui/Access.module.css';
-import AdminHeader from '@/shared/ui/admin-header/AdminHeader';
+import {
+  ACCESS_PERMISSION,
+  CreateRoleForm,
+  RolesWorkspace,
+  useAccess,
+} from "@/modules/access";
+import { useUserStore } from "@/modules/user";
+import AdminCard from "@/shared/ui/admin-card/AdminCard";
+import AdminHeader from "@/shared/ui/admin-header/AdminHeader";
 
-/** Отображает список ролей с поиском и бесконечной подгрузкой. */
+/** Отображает форму создания роли и список с редактором разрешений. */
 export default function RolesPage(): ReactElement {
-  const [search, setSearch] = useState('');
+  const { canAccess } = useAccess();
+  const session = useUserStore((state) => state.authSessionId);
+
   return (
     <>
       <AdminHeader title="Ролі та дозволи" />
-      <div className={styles.search}>
-        <input
-          type="search"
-          className={styles.input}
-          aria-label="Пошук ролі"
-          placeholder="Пошук за назвою…"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-        />
-      </div>
-      <RolesList search={search} />
+      {canAccess(ACCESS_PERMISSION.CREATE_ROLES) && (
+        <AdminCard title="Додати роль" icon="add_moderator">
+          <CreateRoleForm key={session} />
+        </AdminCard>
+      )}
+      <RolesWorkspace />
     </>
   );
 }
